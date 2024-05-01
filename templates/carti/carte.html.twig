@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ parent() }} | Carte {{ carte.id }} {% endblock %}
+
+{% block body %}
+
+    <div>
+        <h3>[{{ carte.id }}] {{ carte.titlu }}</h3>
+        <ul>
+            <li>Autor: {{ carte.autor.nume }} {{ carte.autor.prenume }}</li>
+            <li>Gen: {{ carte.gen.nume }}</li>
+            <li>Pagini: {{ carte.pagini }}</li>
+            <li>Data publicării: {{ carte.getDataPublicarii().format('Y-m-d') }}</li>
+        </ul>
+    </div>
+
+
+    <div>
+        <h3>Clienți ce au cumpărat această carte</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nume</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for client in clienti %}
+                <tr>
+                    <td class="centered">{{ client.id }}</td>
+                    <td>{{ client.nume }} {{ client.prenume }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
