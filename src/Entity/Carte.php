@@ -21,11 +21,11 @@ class Carte
 
     #[ORM\ManyToOne(inversedBy: 'carti')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?gen $gen = null;
+    private ?Gen $gen = null;
 
     #[ORM\ManyToOne(inversedBy: 'carti')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?autor $autor = null;
+    private ?Autor $autor = null;
 
     #[ORM\Column]
     private ?int $pagini = null;
@@ -68,24 +68,24 @@ class Carte
         return $this;
     }
 
-    public function getGen(): ?gen
+    public function getGen(): ?Gen
     {
         return $this->gen;
     }
 
-    public function setGen(?gen $gen): static
+    public function setGen(?Gen $gen): static
     {
         $this->gen = $gen;
 
         return $this;
     }
 
-    public function getAutor(): ?autor
+    public function getAutor(): ?Autor
     {
         return $this->autor;
     }
 
-    public function setAutor(?autor $autor): static
+    public function setAutor(?Autor $autor): static
     {
         $this->autor = $autor;
 

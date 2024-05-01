@@ -23,9 +23,9 @@ class Client
     private ?string $prenume = null;
 
     /**
-     * @var Collection<int, carte>
+     * @var Collection<int, Carte>
      */
-    #[ORM\ManyToMany(targetEntity: carte::class, inversedBy: 'clienti')]
+    #[ORM\ManyToMany(targetEntity: Carte::class, inversedBy: 'clienti')]
     private Collection $carti;
 
     public function __construct()
@@ -70,14 +70,14 @@ class Client
     }
 
     /**
-     * @return Collection<int, carte>
+     * @return Collection<int, Carte>
      */
     public function getCarti(): Collection
     {
         return $this->carti;
     }
 
-    public function addCarti(carte $carti): static
+    public function addCarti(Carte $carti): static
     {
         if (!$this->carti->contains($carti)) {
             $this->carti->add($carti);
@@ -86,7 +86,7 @@ class Client
         return $this;
     }
 
-    public function removeCarti(carte $carti): static
+    public function removeCarti(Carte $carti): static
     {
         $this->carti->removeElement($carti);
 
