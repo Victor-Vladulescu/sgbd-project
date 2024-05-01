@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ parent() }} | Clienți{% endblock %}
+
+{% block body %}
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nume</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for client in clienti %}
+            <tr>
+                <td class="centered"><a href="{{ path('client', {id: client.id}) }}">{{ client.id }}</a></td>
+                <td><a href="{{ path('client', {id: client.id}) }}">{{ client.nume }} {{ client.prenume }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

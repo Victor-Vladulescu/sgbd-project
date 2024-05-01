@@ -29,6 +29,10 @@ class CarteController extends AbstractController
         $carte = $this->carteRepository->find($id);
         $clienti = $carte->getClienti();
 
+        if ($clienti->isEmpty()) {
+            $clienti = null;
+        }
+
         return $this->render("carti/carte.html.twig", [
             'carte' => $carte,
             'clienti' => $clienti,

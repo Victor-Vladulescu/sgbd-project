@@ -9,31 +9,33 @@
         <h3>[{{ carte.id }}] {{ carte.titlu }}</h3>
         <ul>
             <li>Autor: <a href="{{ path('autor', {id: carte.autor.id}) }}">{{ carte.autor.nume }} {{ carte.autor.prenume }}</a></li>
-            <li>Gen: {{ carte.gen.nume }}</li>
+            <li>Gen: <a href="{{ path('gen', {id: carte.gen.id}) }}">{{ carte.gen.nume }}</a></li>
             <li>Pagini: {{ carte.pagini }}</li>
             <li>Data publicării: {{ carte.getDataPublicarii().format('Y-m-d') }}</li>
         </ul>
     </div>
 
 
-    <div>
-        <h3>Clienți ce au cumpărat această carte</h3>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nume</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for client in clienti %}
+    {% if clienti %}
+        <div>
+            <h3>Clienți ce au cumpărat această carte</h3>
+            <table>
+                <thead>
                 <tr>
-                    <td class="centered">{{ client.id }}</td>
-                    <td>{{ client.nume }} {{ client.prenume }}</td>
+                    <th>ID</th>
+                    <th>Nume</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                {% for client in clienti %}
+                    <tr>
+                        <td class="centered"><a href="{{ path('client', {id: client.id}) }}">{{ client.id }}</a></td>
+                        <td><a href="{{ path('client', {id: client.id}) }}">{{ client.nume }} {{ client.prenume }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 
 {% endblock %}

@@ -11,6 +11,7 @@
                 <th>ID</th>
                 <th>Titlu</th>
                 <th>Autor</th>
+                <th>Gen</th>
                 <th>Pagini</th>
                 <th>Data Publicării</th>
             </tr>
@@ -20,7 +21,8 @@
                 <tr>
                     <td class="centered"><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.id }}</a></td>
                     <td><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.titlu }}</a></td>
-                    <td>{{ carte.autor.nume }} {{ carte.autor.prenume }}</td>
+                    <td><a href="{{ path('autor', {id: carte.autor.id}) }}">{{ carte.autor.nume }} {{ carte.autor.prenume }}</a></td>
+                    <td><a href="{{ path('gen', {id: carte.gen.id}) }}">{{ carte.gen.nume }}</a></td>
                     <td class="centered">{{ carte.pagini }}</td>
                     <td class="centered">{{ carte.getDataPublicarii().format('Y-m-d') }}</td>
                 </tr>

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ parent() }} | Gen {{ gen.id }} {% endblock %}
+
+{% block body %}
+
+    <div>
+        <h3>[{{ gen.id }}] {{ gen.nume }}</h3>
+        <ul>
+            <li>Descriere: {{ gen.descriere }}</li>
+        </ul>
+    </div>
+
+    {% if carti %}
+        <div>
+            <h3>Carți scrise cu acest tip de gen</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titlu</th>
+                    <th>Autor</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for carte in carti %}
+                    <tr>
+                        <td class="centered"><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.id }}</a></td>
+                        <td><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.titlu }}</a></td>
+                        <td><a href="{{ path('autor', {id: carte.autor.id}) }}">{{ carte.autor.nume }} {{ carte.autor.prenume }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock %}

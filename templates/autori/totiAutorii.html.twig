@@ -18,7 +18,7 @@
         {% for autor in autori %}
             <tr>
                 <td class="centered"><a href="{{ path('autor', {id: autor.id}) }}">{{ autor.id }}</a></td>
-                <td>{{ autor.nume }} {{ autor.prenume }}</td>
+                <td><a href="{{ path('autor', {id: autor.id}) }}">{{ autor.nume }} {{ autor.prenume }}</a></td>
                 <td>{{ autor.origine }}</td>
                 <td class="centered">{{ autor.getDataNasterii().format('Y-m-d') }}</td>
             </tr>

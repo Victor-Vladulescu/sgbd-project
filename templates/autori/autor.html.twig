@@ -28,8 +28,8 @@
             {% for carte in carti %}
                 <tr>
                     <td class="centered"><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.id }}</a></td>
-                    <td>{{ carte.titlu }}</td>
-                    <td>INCLUDE 'GEN' HERE</td>
+                    <td><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.titlu }}</a></td>
+                    <td><a href="{{ path('gen', {id: carte.gen.id}) }}">{{ carte.gen.nume }}</a></td>
                 </tr>
             {% endfor %}
             </tbody>

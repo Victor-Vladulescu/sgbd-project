@@ -29,6 +29,10 @@ class AutorController extends AbstractController
         $autor = $this->autorRepository->find($id);
         $carti = $autor->getCarti();
 
+        if ($carti->isEmpty()) {
+            $carti = null;
+        }
+
         return $this->render("autori/autor.html.twig", [
             'autor' => $autor,
             'carti' => $carti,
