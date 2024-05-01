@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ parent() }} | Autor {{ autor.id }} {% endblock %}
+
+{% block body %}
+
+    <div>
+        <h3>[{{ autor.id }}] {{ autor.nume }} {{ autor.prenume }}</h3>
+        <ul>
+            <li>Origine: {{ autor.origine }}</li>
+            <li>Data nașterii: {{ autor.getDataNasterii().format('Y-m-d') }}</li>
+        </ul>
+    </div>
+
+
+    <div>
+        <h3>Carți scrise de acest autor</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titlu</th>
+                <th>Gen</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for carte in carti %}
+                <tr>
+                    <td class="centered"><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.id }}</a></td>
+                    <td>{{ carte.titlu }}</td>
+                    <td>INCLUDE 'GEN' HERE</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

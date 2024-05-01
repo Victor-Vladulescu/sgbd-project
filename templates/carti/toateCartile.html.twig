@@ -19,7 +19,7 @@
             {% for carte in carti %}
                 <tr>
                     <td class="centered"><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.id }}</a></td>
-                    <td>{{ carte.titlu }}</td>
+                    <td><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.titlu }}</a></td>
                     <td>{{ carte.autor.nume }} {{ carte.autor.prenume }}</td>
                     <td class="centered">{{ carte.pagini }}</td>
                     <td class="centered">{{ carte.getDataPublicarii().format('Y-m-d') }}</td>
@@ -27,6 +27,5 @@
             {% endfor %}
         </tbody>
     </table>
-
 
 {% endblock %}

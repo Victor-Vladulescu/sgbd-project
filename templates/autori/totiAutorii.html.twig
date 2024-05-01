@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ parent() }} | Autori{% endblock %}
+
+{% block body %}
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nume</th>
+            <th>Origine</th>
+            <th>Data Nașterii</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for autor in autori %}
+            <tr>
+                <td class="centered"><a href="{{ path('autor', {id: autor.id}) }}">{{ autor.id }}</a></td>
+                <td>{{ autor.nume }} {{ autor.prenume }}</td>
+                <td>{{ autor.origine }}</td>
+                <td class="centered">{{ autor.getDataNasterii().format('Y-m-d') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

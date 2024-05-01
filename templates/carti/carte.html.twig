@@ -8,7 +8,7 @@
     <div>
         <h3>[{{ carte.id }}] {{ carte.titlu }}</h3>
         <ul>
-            <li>Autor: {{ carte.autor.nume }} {{ carte.autor.prenume }}</li>
+            <li>Autor: <a href="{{ path('autor', {id: carte.autor.id}) }}">{{ carte.autor.nume }} {{ carte.autor.prenume }}</a></li>
             <li>Gen: {{ carte.gen.nume }}</li>
             <li>Pagini: {{ carte.pagini }}</li>
             <li>Data publicării: {{ carte.getDataPublicarii().format('Y-m-d') }}</li>
