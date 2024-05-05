@@ -3,7 +3,53 @@
 
 {% block title %}{{ parent() }} | Cărți{% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('javascript/carti.js') }}"></script>
+{% endblock %}
+
 {% block body %}
+
+    <button id="add-book-button" onclick="addBook()">Adaugă o carte</button>
+    <div id="add-book" hidden>
+        <h3>Adăugare carte</h3>
+        <form id="add-book-form">
+            <table>
+                <tbody>
+                <tr>
+                    <td><label for="titlu">Titlu:</label></td>
+                    <td><input type="text" name="titlu" id="titlu"></td>
+                </tr>
+                <tr>
+                    <td><label for="autor">Autor:</label></td>
+                    <td>
+                        <input list="autori" name="autor" id="autor">
+                        <datalist id="autori">
+                            {# Populate through API request from JS for optimisation #}
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="gen">Gen:</label></td>
+                    <td>
+                        <input list="genuri" name="gen" id="gen">
+                        {# Populate through API request from JS for optimisation #}
+                        <datalist id="genuri">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="pagini">Pagini:</label></td>
+                    <td><input type="number" name="pagini" id="pagini"></td>
+                </tr>
+                <tr>
+                    <td><label for="data_publicarii">Data publicării:</label></td>
+                    <td><input type="date" name="data_publicarii" id="data_publicarii"></td>
+                </tr>
+                </tbody>
+            </table>
+            <input class="submit-button" type="submit" value="Salvează">
+        </form>
+    </div>
 
     <table>
         <thead>
@@ -17,7 +63,6 @@
             </tr>
         </thead>
         <tbody>
-            {# TODO Include "Add book" functionality #}
             {% for carte in carti %}
                 <tr>
                     <td class="centered"><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.id }}</a></td>

@@ -94,3 +94,24 @@ a:hover {
         margin: 10px;
     }
 }
+
+#add-book {
+    margin-bottom: 50px;
+    table {
+        border: none;
+
+        tr {
+            background-color: #030321;
+        }
+    }
+
+
+    input.submit-button {
+        margin: 10px;
+    }
+}
+
+#add-book-button {
+    width: max-content;
+    margin: 10px;
+}
