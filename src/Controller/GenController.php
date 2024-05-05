@@ -38,4 +38,17 @@ class GenController extends AbstractController
             'carti' => $carti,
         ]);
     }
+
+    #[Route(path: '/api/genuri', name: 'lista_genuri', methods: ['GET'])]
+    public function lista_genuri(): Response
+    {
+        $genuri = $this->genRepository->findAll();
+
+        $result = [];
+        foreach ($genuri as $gen) {
+            array_push($result, array("id" => $gen->getId(), "nume" => $gen->getNume()));
+        }
+
+        return $this->json($result);
+    }
 }

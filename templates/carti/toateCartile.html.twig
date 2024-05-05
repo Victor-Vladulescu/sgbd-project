@@ -17,6 +17,7 @@
             </tr>
         </thead>
         <tbody>
+            {# TODO Include "Add book" functionality #}
             {% for carte in carti %}
                 <tr>
                     <td class="centered"><a href="{{ path('carte', {id: carte.id}) }}">{{ carte.id }}</a></td>

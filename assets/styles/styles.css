@@ -68,3 +68,29 @@ a:hover {
 /*a:active {*/
 /*    color: blue;*/
 /*}*/
+
+#view-book {
+    margin-bottom: 50px;
+    table {
+        border: none;
+        tr {
+            background-color: #030321;
+        }
+    }
+}
+
+#edit-book {
+    margin-bottom: 50px;
+    table {
+        border: none;
+
+        tr {
+            background-color: #030321;
+        }
+    }
+
+
+    input.submit-button {
+        margin: 10px;
+    }
+}

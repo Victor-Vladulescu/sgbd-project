@@ -3,16 +3,88 @@
 
 {% block title %}{{ parent() }} | Carte {{ carte.id }} {% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('javascript/carte.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 
-    <div>
-        <h3>[{{ carte.id }}] {{ carte.titlu }}</h3>
-        <ul>
-            <li>Autor: <a href="{{ path('autor', {id: carte.autor.id}) }}">{{ carte.autor.nume }} {{ carte.autor.prenume }}</a></li>
-            <li>Gen: <a href="{{ path('gen', {id: carte.gen.id}) }}">{{ carte.gen.nume }}</a></li>
-            <li>Pagini: {{ carte.pagini }}</li>
-            <li>Data publicării: {{ carte.getDataPublicarii().format('Y-m-d') }}</li>
-        </ul>
+    <div id="view-book">
+        <h3>Vizionare carte</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td><b>[{{ carte.id }}]</b></td>
+                </tr>
+                <tr>
+                    <td>Titlu:</td>
+                    <td>{{ carte.titlu }}</td>
+                </tr>
+                <tr>
+                    <td>Autor:</td>
+                    <td><a href="{{ path('autor', {id: carte.autor.id}) }}">{{ carte.autor.nume }} {{ carte.autor.prenume }}</a></td>
+                </tr>
+                <tr>
+                    <td>Gen:</td>
+                    <td><a href="{{ path('gen', {id: carte.gen.id}) }}">{{ carte.gen.nume }}</a></td>
+                </tr>
+                <tr>
+                    <td>Pagini:</td>
+                    <td>{{ carte.pagini }}</td>
+                </tr>
+                <tr>
+                    <td>Data publicării:</td>
+                    <td>{{ carte.getDataPublicarii().format('Y-m-d') }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="editBook()">Modifică</button>
+        <button onclick="deleteBook()">Șterge</button>
+    </div>
+    <div id="edit-book" hidden>
+        <h3>Modificare carte</h3>
+        <form id="edit-book-form">
+            <table>
+                <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td><b>[{{ carte.id }}]</b></td>
+                </tr>
+                <tr>
+                    <td><label for="titlu">Titlu:</label></td>
+                    <td><input type="text" name="titlu" id="titlu" value="{{ carte.titlu }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="autor">Autor:</label></td>
+                    <td>
+                        <input list="autori" name="autor" id="autor" value="{{ carte.autor.nume }} {{ carte.autor.prenume }}">
+                        <datalist id="autori">
+                            {# Populate through API request from JS for optimisation #}
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="gen">Gen:</label></td>
+                    <td>
+                        <input list="genuri" name="gen" id="gen" value="{{ carte.gen.nume }}">
+                            {# Populate through API request from JS for optimisation #}
+                        <datalist id="genuri">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="pagini">Pagini:</label></td>
+                    <td><input type="number" name="pagini" id="pagini" value="{{ carte.pagini }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="data_publicarii">Data publicării:</label></td>
+                    <td><input type="date" name="data_publicarii" id="data_publicarii" value="{{ carte.getDataPublicarii().format('Y-m-d') }}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <input class="submit-button" type="submit" value="Salvează">
+        </form>
     </div>
 
 

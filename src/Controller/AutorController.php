@@ -38,4 +38,17 @@ class AutorController extends AbstractController
             'carti' => $carti,
         ]);
     }
+
+    #[Route(path: '/api/autori', name: 'lista_autori', methods: ['GET'])]
+    public function lista_autori(): Response
+    {
+        $autori = $this->autorRepository->findAll();
+
+        $result = [];
+        foreach ($autori as $autor) {
+            array_push($result, array("id" => $autor->getId(), "nume" => $autor->getNume().' '.$autor->getPrenume()));
+        }
+
+        return $this->json($result);
+    }
 }
