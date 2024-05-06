@@ -159,4 +159,20 @@ class CarteController extends AbstractController
 
         return $this->json(['id' => $carte->getId()]);
     }
+
+    #[Route(path: '/api/carte/{id}', name: 'deleteBook', methods: ['DELETE'])]
+    public function deleteBook(int $id, EntityManagerInterface $em): Response
+    {
+        // does this book even exist?
+        $carte = $em->getRepository(Carte::class)->find($id);
+
+        if (!$carte) {
+            return new Response("Book not found", status: 404);
+        }
+
+        $em->remove($carte);
+        $em->flush();
+
+        return new Response(status: 200);
+    }
 }

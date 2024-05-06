@@ -89,6 +89,10 @@ function saveBook(e) {
 }
 
 function deleteBook() {
-    // TODO
-    // send deletion request, and redirect to carti page
+    if (confirm("Ești sigur că vrei să ștergi această carte?")) {
+        fetch(baseURL + '/api/carte/' + bookID, {
+            method: 'DELETE'
+        })
+            .then((res) => window.location.pathname = '/carti')
+    }
 }
